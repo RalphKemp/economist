@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px !important;
+  max-width: 300px;
+  max-height: 600px;
+}
+
+.banner {
+	margin: 0px !important;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 300px;
+	height: 600px;
+	display: flex;
+	justify-content: space-between;
+	align-items: left;
+	flex-direction: column;
+	background-color: #ffffff;
+	overflow: hidden;
+	border: 1px solid black;
+	user-drag: none !important;
+}
+
+
+.background, #body-one, #body-two, #body-three, #body-four, .play, .placeholder {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+	top: 0;
+	left: 0;
+	user-drag: none !important;
+	-webkit-user-drag: none !important;
+}
+
+#body-one, #body-two, #body-three, #body-four {
+  z-index: 10;
+}
+
+#body-two, #body-three, #body-four {
+  opacity: 0;
+}
+
+.rec-container {
+  z-index: 1000;
+  position: absolute;
+  top: 245px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 109px;
+  right: 22px;
+}
+
+.rec-container:hover {
+  cursor: pointer;
+}
+
+.rec {
+  width: 16px;
+  height: 16px;
+  background-color: #705c1a;
+  z-index: 100;
+
+}
+
+.rec:hover {
+  background-color: #ffd400;
+}
+
+.selected {
+  background-color: #ffd400;
+}
+
+
+
+
+
+
+
+
+
+
