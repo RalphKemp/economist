@@ -6,12 +6,14 @@ const bodyOne = document.getElementById('body-one');
 const bodyTwo = document.getElementById('body-two');
 const bodyThree = document.getElementById('body-three');
 const bodyFour = document.getElementById('body-four');
-function toggleColor(rec) {
-  return rec.classList.toggle('selected');
-}
+
 // object arrays
 const bodies = [bodyOne, bodyTwo, bodyThree, bodyFour];
 const rectangles = [recOne, recTwo, recThree, recFour];
+
+function toggleColor(rec) {
+  return rec.classList.toggle('selected');
+}
 
 // return an array without the current object, and for each
 // obj change the style.

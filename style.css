@@ -25,7 +25,6 @@ body {
 	user-drag: none !important;
 }
 
-
 .background, #body-one, #body-two, #body-three, #body-four, .play, .placeholder {
   height: 100%;
   width: 100%;
@@ -65,23 +64,12 @@ body {
   height: 16px;
   background-color: #705c1a;
   z-index: 100;
-
 }
 
 .rec:hover {
-  background-color: #ffd400;
+  background-color: #ffd400 !important;
 }
 
 .selected {
   background-color: #ffd400;
 }
-
-
-
-
-
-
-
-
-
-
