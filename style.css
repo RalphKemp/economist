@@ -44,7 +44,7 @@ body {
 }
 
 .rec-container {
-  z-index: 1000;
+  z-index: 200;
   position: absolute;
   top: 245px;
   display: flex;
@@ -63,7 +63,7 @@ body {
   width: 16px;
   height: 16px;
   background-color: #705c1a;
-  z-index: 100;
+  z-index: 300;
 }
 
 .rec:hover {
@@ -73,3 +73,21 @@ body {
 .selected {
   background-color: #ffd400;
 }
+
+.innerClick {
+  width: 300px;
+  height: 405px;
+  position: absolute;
+  bottom: 0;
+  z-index: 100;
+}
+
+
+
+
+
+
+
+
+
+
