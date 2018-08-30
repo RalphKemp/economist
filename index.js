@@ -6,12 +6,14 @@ const bodyOne = document.getElementById('body-one');
 const bodyTwo = document.getElementById('body-two');
 const bodyThree = document.getElementById('body-three');
 const bodyFour = document.getElementById('body-four');
-function toggleColor(rec) {
-  return rec.classList.toggle('selected');
-}
+
 // object arrays
 const bodies = [bodyOne, bodyTwo, bodyThree, bodyFour];
 const rectangles = [recOne, recTwo, recThree, recFour];
+
+function toggleColor(rec) {
+  return rec.classList.toggle('selected');
+}
 
 // return an array without the current object, and for each
 // obj change the style.
@@ -44,15 +46,16 @@ listener(recFour, bodyFour);
 
 const tl = new TimelineLite();
 
-tl.to(bodyOne, 0.3, { opacity: 0, delay: 2 })
-  .to(bodyTwo, 0.3, { opacity: 1 }, '-=0.5')
-  .call(toggleColor, [recOne])
-  .call(toggleColor, [recTwo])
-  .to(bodyTwo, 0.3, { opacity: 0, delay: 2 })
-  .call(toggleColor, [recTwo])
-  .call(toggleColor, [recThree])
-  .to(bodyThree, 0.3, { opacity: 1 }, '-=0.5')
-  .to(bodyThree, 0.3, { opacity: 0, delay: 2 })
-  .call(toggleColor, [recThree])
-  .call(toggleColor, [recFour])
-  .to(bodyFour, 0.3, { opacity: 1 }, '-=0.5');
+tl.to(bodyOne, 0.3, { opacity: 0, delay: 3 })
+  .call(toggleColor, [recTwo], this, 2.3)
+  .call(toggleColor, [recOne], this, 2.3)
+  .to(bodyTwo, 0.3, { opacity: 1 }, '-=1')
+  .to(bodyTwo, 0.3, { opacity: 0, delay: 3 })
+  .call(toggleColor, [recThree], this, 5.6)
+  .call(toggleColor, [recTwo], this, 5.6)
+  .to(bodyThree, 0.3, { opacity: 1 }, '-=1')
+  .to(bodyThree, 0.3, { opacity: 0, delay: 3 })
+  .call(toggleColor, [recFour], this, 8.9)
+  .call(toggleColor, [recThree], this, 8.9)
+  .to(bodyFour, 0.3, { opacity: 1 }, '-=1');
+
