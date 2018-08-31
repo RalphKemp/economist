@@ -7,14 +7,14 @@ const volumeBar = document.getElementById('volume-bar');
 const vidClickContainer = document.querySelector('.vid-click-container');
 const pauseButton = document.getElementById('pause-button');
 
-function setHover(elem, button) {
-  elem.addEventListener('mouseover', () => {
-    button.style.display = 'block';
-  });
-  elem.addEventListener('mouseout', () => {
-    button.style.display = 'none';
-  });
-}
+// function setHover(elem, button) {
+//   elem.addEventListener('mousemove', () => {
+//     button.style.display = 'block';
+//   });
+//   elem.addEventListener('mouseout', () => {
+//     button.style.display = 'none';
+//   });
+// }
 
 pauseButton.style.display = 'none';
 playButton.style.opacity = 0;
@@ -27,11 +27,11 @@ vidClickContainer.addEventListener('click', function() {
   if (video.paused == true) {
     video.play();
     playButton.style.display = 'none';
-    pauseButton.style.opacity = 'none';
-    setHover(vidClickContainer, pauseButton);
+    // pauseButton.style.opacity = 'none';
+    // setHover(vidClickContainer, pauseButton);
   } else {
     video.pause();
-    pauseButton.style.display = 'none';
+    // pauseButton.style.display = 'none';
     playButton.style.display = 'block';
   }
 });
