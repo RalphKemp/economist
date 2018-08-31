@@ -8,6 +8,7 @@ const vidClickContainer = document.querySelector('.vid-click-container');
 const pauseButton = document.getElementById('pause-button');
 
 video.muted = true;
+video.loop = true;
 pauseButton.style.display = 'none';
 playButton.style.display = 'none';
 
@@ -45,9 +46,9 @@ vidClickContainer.addEventListener('click', () => {
 muteButton.addEventListener('click', function() {
   if (video.muted == false) {
     video.muted = true;
-    muteButton.innerHTML = 'Unmute';
+    muteButton.innerHTML = '<i class="fas fa-volume-off"></i>';
   } else {
     video.muted = false;
-    muteButton.innerHTML = 'Mute';
+    muteButton.innerHTML = '<i class="fas fa-volume-up"></i>';
   }
 });

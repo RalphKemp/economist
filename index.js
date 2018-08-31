@@ -11,6 +11,22 @@ const bodyFour = document.getElementById('body-four');
 const bodies = [bodyOne, bodyTwo, bodyThree, bodyFour];
 const rectangles = [recOne, recTwo, recThree, recFour];
 
+const runSlides = () => {
+  const tl = new TimelineLite();
+  tl.to(bodyOne, 0.3, { opacity: 0, delay: 4 })
+    .call(toggleColor, [recTwo], this, 3.4)
+    .call(toggleColor, [recOne], this, 3.4)
+    .to(bodyTwo, 0.3, { opacity: 1 }, '-=1')
+    .to(bodyTwo, 0.3, { opacity: 0, delay: 4 })
+    .call(toggleColor, [recThree], this, 7.6)
+    .call(toggleColor, [recTwo], this, 7.6)
+    .to(bodyThree, 0.3, { opacity: 1 }, '-=1')
+    .to(bodyThree, 0.3, { opacity: 0, delay: 4 })
+    .call(toggleColor, [recFour], this, 11)
+    .call(toggleColor, [recThree], this, 11)
+    .to(bodyFour, 0.3, { opacity: 1 }, '-=1');
+};
+
 function toggleColor(rec) {
   return rec.classList.toggle('selected');
 }
@@ -37,24 +53,13 @@ function listener(rec, body) {
   });
 }
 
+runSlides();
+
 listener(recOne, bodyOne);
 listener(recTwo, bodyTwo);
 listener(recThree, bodyThree);
 listener(recFour, bodyFour);
 
-// loop
-
-const tl = new TimelineLite();
-
-tl.to(bodyOne, 0.3, { opacity: 0, delay: 4 })
-  .call(toggleColor, [recTwo], this, 3.4)
-  .call(toggleColor, [recOne], this, 3.4)
-  .to(bodyTwo, 0.3, { opacity: 1 }, '-=1')
-  .to(bodyTwo, 0.3, { opacity: 0, delay: 4 })
-  .call(toggleColor, [recThree], this, 7.6)
-  .call(toggleColor, [recTwo], this, 7.6)
-  .to(bodyThree, 0.3, { opacity: 1 }, '-=1')
-  .to(bodyThree, 0.3, { opacity: 0, delay: 4 })
-  .call(toggleColor, [recFour], this, 11)
-  .call(toggleColor, [recThree], this, 11)
-  .to(bodyFour, 0.3, { opacity: 1 }, '-=1');
+// basically we need it that if the listener function is called we kill the
+// runslides funtion. I tried simply adding the function as an argument to listerner
+// to override it, i will try and maybe do that again but change it slightly.
