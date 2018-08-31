@@ -8,6 +8,7 @@ const vidClickContainer = document.querySelector('.vid-click-container');
 const pauseButton = document.getElementById('pause-button');
 
 video.muted = true;
+video.loop = true;
 pauseButton.style.display = 'none';
 playButton.style.display = 'none';
 

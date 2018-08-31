@@ -53,6 +53,8 @@ function listener(rec, body) {
   });
 }
 
+runSlides();
+
 listener(recOne, bodyOne);
 listener(recTwo, bodyTwo);
 listener(recThree, bodyThree);
