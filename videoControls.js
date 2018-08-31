@@ -5,32 +5,36 @@ const fullScreenButton = document.getElementById('full-screen');
 const seekBar = document.getElementById('seek-bar');
 const volumeBar = document.getElementById('volume-bar');
 const vidClickContainer = document.querySelector('.vid-click-container');
+const pauseButton = document.getElementById('pause-button');
 
-// first add logic to show and hide play image and pause image. Then
-// add hover logic. change the images for mute too.
-
-TweenMax.to('#video, #play-pause', 1.5, { opacity: 0.9 });
-
-// controls
-  vidClickContainer.addEventListener('click', function() {
-    // playButton.style.display = "none";
-    if (video.paused == true) {
-      video.play();
-      playButton.style.display = 'none';
-
-      // show on hover
-      vidClickContainer.addEventListener('mouseover', () => {
-        playButton.style.display = 'block';
-      });
-      vidClickContainer.addEventListener('mouseout', () => {
-        playButton.style.display = 'none';
-      });
-    } else {
-      video.pause();
-      playButton.style.display = 'block';
-    }
+function setHover(elem, button) {
+  elem.addEventListener('mouseover', () => {
+    button.style.display = 'block';
   });
+  elem.addEventListener('mouseout', () => {
+    button.style.display = 'none';
+  });
+}
 
+pauseButton.style.display = 'none';
+playButton.style.opacity = 0;
+
+// initial fade in
+TweenMax.to('#video, #play-pause', 1.5, { opacity: 0.8 });
+// controls
+vidClickContainer.addEventListener('click', function() {
+  // playButton.style.display = "none";
+  if (video.paused == true) {
+    video.play();
+    playButton.style.display = 'none';
+    pauseButton.style.opacity = 'none';
+    setHover(vidClickContainer, pauseButton);
+  } else {
+    video.pause();
+    pauseButton.style.display = 'none';
+    playButton.style.display = 'block';
+  }
+});
 
 muteButton.addEventListener('click', function() {
   if (video.muted == false) {

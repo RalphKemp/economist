@@ -64,7 +64,7 @@ body {
   top: 0px;
   width: 300px;
   height: 181px;
-  z-index: 500;
+  z-index: 5000;
 }
 
 .vid-click-container:hover {
@@ -79,16 +79,23 @@ body {
 
 #play-pause {
   position: absolute;
-  top: 35px;
-  left: 95px;
-  height: 95px;
-  width: 95px;
-  opacity: 0;
+  top: 41px;
+  left: 105px;
+  height: 80px;
+  width: 80px;
 }
 
 #play-pause:hover {
   cursor: pointer !important;
   opacity: 1 !important;
+}
+
+#pause-button {
+  position: absolute;
+  top: 58px;
+  left: 122px;
+  height: 45px;
+  width: 45px;
 }
 
 #mute {
