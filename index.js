@@ -46,15 +46,15 @@ listener(recFour, bodyFour);
 
 const tl = new TimelineLite();
 
-tl.to(bodyOne, 0.3, { opacity: 0, delay: 3 })
-  .call(toggleColor, [recTwo], this, 2.3)
-  .call(toggleColor, [recOne], this, 2.3)
+tl.to(bodyOne, 0.3, { opacity: 0, delay: 4 })
+  .call(toggleColor, [recTwo], this, 3.4)
+  .call(toggleColor, [recOne], this, 3.4)
   .to(bodyTwo, 0.3, { opacity: 1 }, '-=1')
-  .to(bodyTwo, 0.3, { opacity: 0, delay: 3 })
-  .call(toggleColor, [recThree], this, 5.6)
-  .call(toggleColor, [recTwo], this, 5.6)
+  .to(bodyTwo, 0.3, { opacity: 0, delay: 4 })
+  .call(toggleColor, [recThree], this, 7.6)
+  .call(toggleColor, [recTwo], this, 7.6)
   .to(bodyThree, 0.3, { opacity: 1 }, '-=1')
-  .to(bodyThree, 0.3, { opacity: 0, delay: 3 })
-  .call(toggleColor, [recFour], this, 8.9)
-  .call(toggleColor, [recThree], this, 8.9)
+  .to(bodyThree, 0.3, { opacity: 0, delay: 4 })
+  .call(toggleColor, [recFour], this, 11)
+  .call(toggleColor, [recThree], this, 11)
   .to(bodyFour, 0.3, { opacity: 1 }, '-=1');
