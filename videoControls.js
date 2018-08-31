@@ -7,32 +7,38 @@ const volumeBar = document.getElementById('volume-bar');
 const vidClickContainer = document.querySelector('.vid-click-container');
 const pauseButton = document.getElementById('pause-button');
 
-// function setHover(elem, button) {
-//   elem.addEventListener('mousemove', () => {
-//     button.style.display = 'block';
-//   });
-//   elem.addEventListener('mouseout', () => {
-//     button.style.display = 'none';
-//   });
-// }
-
+video.muted = true;
 pauseButton.style.display = 'none';
-playButton.style.opacity = 0;
+playButton.style.display = 'none';
+
 
 // initial fade in
-TweenMax.to('#video, #play-pause', 1.5, { opacity: 0.8 });
+TweenMax.to('#video', 1.5, { opacity: 0.8 });
+
 // controls
-vidClickContainer.addEventListener('click', function() {
-  // playButton.style.display = "none";
-  if (video.paused == true) {
-    video.play();
-    playButton.style.display = 'none';
-    // pauseButton.style.opacity = 'none';
-    // setHover(vidClickContainer, pauseButton);
+
+vidClickContainer.addEventListener('mousemove', () => {
+  if (video.paused === true) {
+    playButton.style.display = 'block'
+    pauseButton.style.display = 'none';
   } else {
+    pauseButton.style.display = 'block';
+  }
+});
+vidClickContainer.addEventListener('mouseout', () => {
+  pauseButton.style.display = 'none';
+});
+
+
+
+vidClickContainer.addEventListener('click', () => {
+  if (video.paused === true) {
+    video.play();
+    pauseButton.style.display = 'none';
+    playButton.style.display = 'none';
+  } else {
+    pauseButton.style.display = 'block';
     video.pause();
-    // pauseButton.style.display = 'none';
-    playButton.style.display = 'block';
   }
 });
 
