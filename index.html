@@ -6,6 +6,7 @@
     <!-- preload -->
     <link rel="preload" href="style.css" as="style">
     <link rel="preload" href="index.js" as="script">
+    <link rel="preload" href="videoControls.js" as="script">
     <!-- <link rel="preload" href="./images/background.png" as="image"> -->
     <!-- other -->
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -23,8 +24,18 @@
         <img src="./images/bodyTwo.png" alt="body-two" id="body-two">
         <img src="./images/bodyThree.png" alt="body-three" id="body-three">
         <img src="./images/bodyFour.png" alt="body-four" id="body-four">
-        <img src="./images/placeholder.png" alt="placeholder" class="placeholder">
-        <img src="./images/play.png" alt="play" class="play">
+        <div class="video-container">
+          <video id="video">
+            <source src="./images/vid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-controls">
+            <img src="./images/play.png" id="play-pause">
+            <!-- <input type="range" id="seek-bar" value="0"> -->
+            <button type="button" id="mute">Mute</button>
+            <!-- <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1"> -->
+          </div>
+        </div>
       <div class="rec-container">
         <div class="rec selected" id="rec-one"></div>
         <div class="rec" id="rec-two"></div>
@@ -34,5 +45,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
     <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="videoControls.js"></script>
   </body>
 </html>
