@@ -27,8 +27,6 @@ const runSlides = () => {
     .to(bodyFour, 0.3, { opacity: 1 }, '-=1');
 };
 
-runSlides();
-
 function toggleColor(rec) {
   return rec.classList.toggle('selected');
 }
@@ -46,17 +44,20 @@ function trigger(arr, elem, styleChange, styleChangeTwo) {
 // EventListeners for each rectangle. When rec is clicked,
 // we call the trigger which use rec and body, then set the
 // styles of the objects we're on, as opposed to the newArray objs.
-function listener(rec, body, func) {
+function listener(rec, body) {
   rec.addEventListener('click', () => {
     trigger(bodies, body, 0, null);
     trigger(rectangles, rec, null, '#705c1a');
     body.style.opacity = 1;
     rec.style.backgroundColor = '#ffd400';
-    func = function() {};
   });
 }
 
-listener(recOne, bodyOne, runSlides);
-listener(recTwo, bodyTwo, runSlides);
-listener(recThree, bodyThree, runSlides);
-listener(recFour, bodyFour, runSlides);
+listener(recOne, bodyOne);
+listener(recTwo, bodyTwo);
+listener(recThree, bodyThree);
+listener(recFour, bodyFour);
+
+// basically we need it that if the listener function is called we kill the
+// runslides funtion. I tried simply adding the function as an argument to listerner
+// to override it, i will try and maybe do that again but change it slightly.
