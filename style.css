@@ -25,7 +25,7 @@ body {
 	user-drag: none !important;
 }
 
-.background, #body-one, #body-two, #body-three, #body-four, .play, .placeholder {
+.background, #body-one, #body-two, #body-three, #body-four {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -34,6 +34,76 @@ body {
 	user-drag: none !important;
 	-webkit-user-drag: none !important;
 }
+
+.play {
+  max-height: 95px;
+  position: absolute;
+  top: 57px;
+  right: 108px;
+}
+
+.video-container {
+  width: 300px;
+  height: 250px;
+  position: absolute;
+  top: 0;
+}
+
+.video-container video {
+  position: absolute;
+  left: -7px;
+  top: 0px;
+  width: 374px;
+  height: 211px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.vid-click-container {
+  position: absolute;
+  top: 0px;
+  width: 300px;
+  height: 181px;
+  z-index: 5000;
+}
+
+.vid-click-container:hover {
+  cursor: pointer !important;
+}
+
+.video-controls {
+  position: absolute;
+  top: 10px;
+  z-index: 500;
+}
+
+#play-pause {
+  position: absolute;
+  top: 41px;
+  left: 105px;
+  height: 80px;
+  width: 80px;
+}
+
+#play-pause:hover {
+  cursor: pointer !important;
+  opacity: 1 !important;
+}
+
+#pause-button {
+  position: absolute;
+  top: 58px;
+  left: 122px;
+  height: 45px;
+  width: 45px;
+}
+
+#mute {
+  position: absolute;
+  top: 172px;
+  left: 247px;
+}
+
 
 #body-one, #body-two, #body-three, #body-four {
   z-index: 10;
@@ -44,7 +114,7 @@ body {
 }
 
 .rec-container {
-  z-index: 1000;
+  z-index: 200;
   position: absolute;
   top: 245px;
   display: flex;
@@ -63,7 +133,7 @@ body {
   width: 16px;
   height: 16px;
   background-color: #705c1a;
-  z-index: 100;
+  z-index: 300;
 }
 
 .rec:hover {
@@ -73,3 +143,21 @@ body {
 .selected {
   background-color: #ffd400;
 }
+
+.innerClick {
+  width: 300px;
+  height: 417px;
+  position: absolute;
+  bottom: 0;
+  z-index: 100;
+}
+
+
+
+
+
+
+
+
+
+

@@ -58,4 +58,3 @@ tl.to(bodyOne, 0.3, { opacity: 0, delay: 3 })
   .call(toggleColor, [recFour], this, 8.9)
   .call(toggleColor, [recThree], this, 8.9)
   .to(bodyFour, 0.3, { opacity: 1 }, '-=1');
-
