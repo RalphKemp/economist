@@ -13,18 +13,18 @@ const rectangles = [recOne, recTwo, recThree, recFour];
 
 const runSlides = () => {
   const tl = new TimelineLite();
-  tl.to(bodyOne, 0.3, { opacity: 0, delay: 4 })
-    .call(toggleColor, [recTwo], this, 3.4)
-    .call(toggleColor, [recOne], this, 3.4)
-    .to(bodyTwo, 0.3, { opacity: 1 }, '-=1')
-    .to(bodyTwo, 0.3, { opacity: 0, delay: 4 })
-    .call(toggleColor, [recThree], this, 7.6)
-    .call(toggleColor, [recTwo], this, 7.6)
-    .to(bodyThree, 0.3, { opacity: 1 }, '-=1')
-    .to(bodyThree, 0.3, { opacity: 0, delay: 4 })
-    .call(toggleColor, [recFour], this, 11)
-    .call(toggleColor, [recThree], this, 11)
-    .to(bodyFour, 0.3, { opacity: 1 }, '-=1');
+  tl.to(bodyOne, 0.3, { opacity: 0, delay: 4.5 })
+    .call(toggleColor, [recTwo], this, 4.5)
+    .call(toggleColor, [recOne], this, 4.5)
+    .to(bodyTwo, 0.3, { opacity: 1 }, '-=0.3')
+    .to(bodyTwo, 0.3, { opacity: 0, delay: 5 })
+    .call(toggleColor, [recThree], this, 9.8)
+    .call(toggleColor, [recTwo], this, 9.8)
+    .to(bodyThree, 0.3, { opacity: 1 }, '-=0.3')
+    .to(bodyThree, 0.3, { opacity: 0, delay: 4.5 })
+    .call(toggleColor, [recFour], this, 14.7)
+    .call(toggleColor, [recThree], this, 14.7)
+    .to(bodyFour, 0.3, { opacity: 1 }, '-=0.3');
 };
 
 function toggleColor(rec) {

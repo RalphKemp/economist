@@ -41,7 +41,7 @@ vidClickContainer.addEventListener('click', () => {
 });
 
 muteButton.addEventListener('click', function() {
-  if (video.mute) {
+  if (video.muted) {
     video.muted = false;
     muteButton.innerHTML = '<i class="fas fa-volume-up"></i>';
   } else {
