@@ -12,7 +12,6 @@ video.loop = true;
 pauseButton.style.display = 'none';
 playButton.style.display = 'none';
 
-
 // initial fade in
 TweenMax.to('#video', 1.5, { opacity: 0.8 });
 
@@ -44,11 +43,12 @@ vidClickContainer.addEventListener('click', () => {
 });
 
 muteButton.addEventListener('click', function() {
-  if (video.muted == false) {
-    video.muted = true;
-    muteButton.innerHTML = '<i class="fas fa-volume-off"></i>';
-  } else {
+  if (video.muted == true) {
     video.muted = false;
     muteButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+  } else {
+    video.muted = true;
+    muteButton.innerHTML = '<i class="fas fa-volume-off"></i>';
   }
+  console.log(video.muted)
 });
