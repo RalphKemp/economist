@@ -9,35 +9,37 @@ const pauseButton = document.getElementById('pause-button');
 
 video.muted = true;
 video.loop = true;
-pauseButton.style.display = 'none';
-playButton.style.display = 'none';
+pauseButton.style.opacity = 0;
+playButton.style.opacity = 0;
 
 // initial fade in
 TweenMax.to('#video', 1.5, { opacity: 0.8 });
 
 // controls
 
-vidClickContainer.addEventListener('mousemove', () => {
+vidClickContainer.addEventListener('mouseover', () => {
   if (video.paused === true) {
-    playButton.style.display = 'block'
-    pauseButton.style.display = 'none';
+    TweenMax.to(playButton, 0.4, { opacity: 0.8 });
+    TweenMax.to(pauseButton, 0.4, { opacity: 0 });
   } else {
-    pauseButton.style.display = 'block';
+    TweenMax.to(pauseButton, 0.4, { opacity: 0.8 });
   }
 });
+
 vidClickContainer.addEventListener('mouseout', () => {
-  pauseButton.style.display = 'none';
+  TweenMax.to(pauseButton, 0.4, { opacity: 0 });
 });
 
 
 
 vidClickContainer.addEventListener('click', () => {
   if (video.paused === true) {
+    TweenMax.to(pauseButton, 0.4, { opacity: 0 });
+    TweenMax.to(playButton, 0.4, { opacity: 0 });
     video.play();
-    pauseButton.style.display = 'none';
-    playButton.style.display = 'none';
   } else {
-    pauseButton.style.display = 'block';
+    TweenMax.to(pauseButton, 0.4, { opacity: 0 });
+    TweenMax.to(playButton, 0.4, { opacity: 0.8 });
     video.pause();
   }
 });
