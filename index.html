@@ -6,13 +6,13 @@
     <!-- preload -->
     <link rel="preload" href="style.css" as="style">
     <link rel="preload" href="index.js" as="script">
-    <link rel="preload" href="videoControls.js" as="script">
     <!-- <link rel="preload" href="./images/background.png" as="image"> -->
     <!-- other -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Londrina+Solid:100,300" rel="stylesheet">
+    <script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
     <script type="text/javascript">var clickTag = "";</script>
     <title>The Economist Double MPU</title>
   </head>
@@ -26,6 +26,38 @@
         <img src="./images/bodyThree.png" alt="body-three" id="body-three">
         <img src="./images/bodyFour.png" alt="body-four" id="body-four">
         <div class="video-container">
+        </div>
+        <div class="vid-click-container">
+        </div>
+      <div class="rec-container">
+        <div class="rec selected" id="rec-one"></div>
+        <div class="rec" id="rec-two"></div>
+        <div class="rec" id="rec-three"></div>
+        <div class="rec" id="rec-four"></div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript">
+      if (Enabler.isInitialized()) {
+        init();
+      } else {
+        Enabler.addEventListener(studio.events.StudioEvent.INIT, init);
+      }
+      // Runs when Enabler is ready.
+      function init() {
+        if (Enabler.isPageLoaded()) {
+          politeInit();
+        } else {
+          Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, politeInit);
+        }
+      };
+
+      // Runs when the page is completely loaded.
+      function politeInit(){
+        // Add your code to hide any loading image or animation and load creative
+        // assets or begin creative animation.
+        document.querySelector('.video-container').innerHTML = `
           <video id="video" autoplay="true">
             <source src="./images/vid.mp4" type="video/mp4" loop="true">
             Your browser does not support the video tag.
@@ -39,19 +71,61 @@
               <!-- <i class="fas fa-volume-off"></i> -->
             </button>
             <!-- <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1"> -->
-          </div>
-        </div>
-        <div class="vid-click-container">
-        </div>
-      <div class="rec-container">
-        <div class="rec selected" id="rec-one"></div>
-        <div class="rec" id="rec-two"></div>
-        <div class="rec" id="rec-three"></div>
-        <div class="rec" id="rec-four"></div>
-      </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
-    <script type="text/javascript" src="index.js"></script>
-    <script type="text/javascript" src="videoControls.js"></script>
+          </div>`
+
+          const video = document.getElementById('video');
+          const playButton = document.getElementById('play-pause');
+          const muteButton = document.getElementById('mute');
+          const fullScreenButton = document.getElementById('full-screen');
+          const seekBar = document.getElementById('seek-bar');
+          const volumeBar = document.getElementById('volume-bar');
+          const vidClickContainer = document.querySelector('.vid-click-container');
+          const pauseButton = document.getElementById('pause-button');
+
+          video.muted = true;
+          video.loop = true;
+          pauseButton.style.opacity = 0;
+          playButton.style.opacity = 0;
+
+          // initial fade in
+          TweenMax.to('#video', 1.5, { opacity: 0.8 });
+
+          // controls
+          // mousover the div. If the video is playing, pause button fades in.
+          vidClickContainer.addEventListener('mouseover', () => {
+            if (!video.paused) {
+              TweenMax.to(pauseButton, 0.4, { opacity: 0.8 });
+            }
+          });
+          // and it fades out on mouseout.
+          vidClickContainer.addEventListener('mouseout', () => {
+            TweenMax.to(pauseButton, 0.4, { opacity: 0 });
+          });
+
+          // on a click, pause button fades and play fades in, and if video is
+          // paused we fade playbutton.
+          vidClickContainer.addEventListener('click', () => {
+            if (video.paused) {
+              TweenMax.to(playButton, 0.4, { opacity: 0 });
+              video.play();
+            } else {
+              TweenMax.to(pauseButton, 0.4, { opacity: 0 });
+              TweenMax.to(playButton, 0.4, { opacity: 0.8 });
+              video.pause();
+            }
+          });
+
+          muteButton.addEventListener('click', function() {
+            if (video.muted) {
+              video.muted = false;
+              muteButton.innerHTML = '<img src="./images/volume.png" id="volume-button">';
+            } else {
+              video.muted = true;
+              muteButton.innerHTML = '<img src="./images/mute.png" id="mute-button">';
+            }
+            console.log(video.muted);
+          });
+      };
+    </script>
   </body>
 </html>
