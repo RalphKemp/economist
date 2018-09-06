@@ -38,5 +38,77 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
     <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript">
+      document.querySelector('.video-container').innerHTML = `
+          <video id="video" autoplay="false">
+            <source src="./images/vid.mp4" type="video/mp4" loop="true">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-controls">
+            <img src="./images/pause.png" id="pause-button">
+            <img src="./images/play.png" id="play-pause">
+            <!-- <input type="range" id="seek-bar" value="0"> -->
+            <button type="button" id="mute">
+              <img src="./images/mute.png" id="mute-button">
+              <!-- <i class="fas fa-volume-off"></i> -->
+            </button>
+            <!-- <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1"> -->
+          </div>`;
+
+          const video = document.getElementById('video');
+          const playButton = document.getElementById('play-pause');
+          const muteButton = document.getElementById('mute');
+          const fullScreenButton = document.getElementById('full-screen');
+          const seekBar = document.getElementById('seek-bar');
+          const volumeBar = document.getElementById('volume-bar');
+          const vidClickContainer = document.querySelector('.vid-click-container');
+          const pauseButton = document.getElementById('pause-button');
+
+          video.muted = true;
+          video.loop = true;
+          video.pause();
+          pauseButton.style.opacity = 0;
+          playButton.style.opacity = 1;
+
+          // initial fade in
+          TweenMax.to('#video', 1.5, { opacity: 0.8 });
+
+          // controls
+          // mousover the div. If the video is playing, pause button fades in.
+          vidClickContainer.addEventListener('mouseover', () => {
+            if (!video.paused) {
+              TweenMax.to(pauseButton, 0.4, { opacity: 0.8 });
+            }
+          });
+          // and it fades out on mouseout.
+          vidClickContainer.addEventListener('mouseout', () => {
+            TweenMax.to(pauseButton, 0.4, { opacity: 0 });
+          });
+
+          // on a click, pause button fades and play fades in, and if video is
+          // paused we fade playbutton.
+          vidClickContainer.addEventListener('click', () => {
+            console.log(video.paused);
+            if (video.paused) {
+              TweenMax.to(playButton, 0.4, { opacity: 0 });
+              video.play();
+            } else {
+              TweenMax.to(pauseButton, 0.4, { opacity: 0 });
+              TweenMax.to(playButton, 0.4, { opacity: 0.8 });
+              video.pause();
+            }
+          });
+
+          muteButton.addEventListener('click', function() {
+            if (video.muted) {
+              video.muted = false;
+              muteButton.innerHTML =
+                '<img src="./images/volume.png" id="volume-button">';
+            } else {
+              video.muted = true;
+              muteButton.innerHTML = '<img src="./images/mute.png" id="mute-button">';
+            }
+          });
+    </script>
   </body>
 </html>
