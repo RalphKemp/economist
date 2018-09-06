@@ -88,8 +88,6 @@
           pauseButton.style.opacity = 0;
           playButton.style.opacity = 1;
 
-          console.log(video.paused)
-
           // initial fade in
           TweenMax.to('#video', 1.5, { opacity: 0.8 });
 
@@ -127,7 +125,6 @@
               video.muted = true;
               muteButton.innerHTML = '<img src="./images/mute.png" id="mute-button">';
             }
-            console.log(video.muted);
           });
       };
     </script>
