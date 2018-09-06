@@ -58,7 +58,7 @@
         // Add your code to hide any loading image or animation and load creative
         // assets or begin creative animation
         document.querySelector('.video-container').innerHTML = `
-          <video id="video" autoplay="true">
+          <video id="video" autoplay="false">
             <source src="./images/vid.mp4" type="video/mp4" loop="true">
             Your browser does not support the video tag.
           </video>
@@ -84,8 +84,11 @@
 
           video.muted = true;
           video.loop = true;
+          video.pause();
           pauseButton.style.opacity = 0;
-          playButton.style.opacity = 0;
+          playButton.style.opacity = 1;
+
+          console.log(video.paused)
 
           // initial fade in
           TweenMax.to('#video', 1.5, { opacity: 0.8 });
@@ -105,6 +108,7 @@
           // on a click, pause button fades and play fades in, and if video is
           // paused we fade playbutton.
           vidClickContainer.addEventListener('click', () => {
+            console.log(video.paused)
             if (video.paused) {
               TweenMax.to(playButton, 0.4, { opacity: 0 });
               video.play();
